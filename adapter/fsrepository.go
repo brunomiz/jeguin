@@ -2,8 +2,12 @@ package adapter
 
 import "github.com/brunomiz/jeguin/domain"
 
-type fileSystemRepository struct{}
+type FileSystemRepository struct{}
 
-func (fs *fileSystemRepository) GetJobs() []domain.Job {
-	return []domain.Job{}
+func (fs *FileSystemRepository) GetJobs() []domain.Job {
+	return ConvertToJob("jobs.txt")
+}
+
+func NewJobsRepository() *FileSystemRepository {
+	return &FileSystemRepository{}
 }

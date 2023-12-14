@@ -5,7 +5,7 @@ import (
 )
 
 func TestConvertToJob(t *testing.T) {
-	got := convertToJob("resources/testJobs.txt")
+	got := ConvertToJob("resources/testJobs.txt")
 	job := got[0]
 	jobToken := job.GetToken()
 	want := "myjob"

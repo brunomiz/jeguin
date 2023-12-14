@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func convertToJob(filePath string) []domain.Job {
+func ConvertToJob(filePath string) []domain.Job {
 	lines := readFile(filePath)
 	var jobs []domain.Job
 	var job domain.Job

@@ -1,15 +1,15 @@
 package domain
 
 import (
+	"fmt"
 	"log"
 	"os/exec"
 	"strings"
 )
 
 type Job struct {
-	token     string
-	commands  []string
-	execution func()
+	token    string
+	commands []string
 }
 
 func (j *Job) GetToken() string {
@@ -30,7 +30,7 @@ func (j *Job) GetExecution() func() {
 			if i == 0 {
 				name = component
 			} else {
-				args = append(args, command)
+				args = append(args, component)
 			}
 		}
 		commands = append(commands, exec.Command(name, args...))
@@ -39,6 +39,7 @@ func (j *Job) GetExecution() func() {
 	return func() {
 		for _, command := range commands {
 			err := command.Run()
+			fmt.Println("executing:", command)
 			if err != nil {
 				log.Println(err)
 			}
