@@ -13,8 +13,10 @@ echo 'Hello world'
 echo 'Hello world2'
 ````
 
+Execute Jeguin providing the port to run. Ex.: jeguin 8080
+
 This example will create two webhooks:
-* http://localhost:8080/myjob
-* http://localhost:8080/myjob2
+* http://localhost:PORT_NUMBER/myjob
+* http://localhost::PORT_NUMBER/myjob2
 
 When a request is received on the `/myjob`, it executes the command `echo 'Hello world'`  

@@ -6,6 +6,7 @@ import (
 	"github.com/brunomiz/jeguin/domain"
 	"github.com/brunomiz/jeguin/ports"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -20,9 +21,12 @@ func serveJobs(jobs []domain.Job) {
 		handler := generateHandler(job)
 		http.HandleFunc("/"+token, handler)
 	}
-	port := "8080"
+	port := os.Args[1]
+	if port == "" {
+		panic("Should provide a port! Ex.: jeguin 8080")
+	}
 	fmt.Println("Listening on port", port)
-	err := http.ListenAndServe("localhost: "+port, nil)
+	err := http.ListenAndServe(":"+port, nil)
 	panic(err)
 }
 
