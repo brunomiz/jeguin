@@ -33,6 +33,8 @@ func serveJobs(jobs []domain.Job) {
 func generateHandler(job domain.Job) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		execution := job.GetExecution()
-		execution()
+		go func() {
+			execution()
+		}()
 	}
 }
