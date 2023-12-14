@@ -1,0 +1,4 @@
+[myjob]
+echo 'Hello world'
+[myjob2]
+echo 'Hello world2'
